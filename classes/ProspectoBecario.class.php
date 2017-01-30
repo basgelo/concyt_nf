@@ -2,14 +2,8 @@
 
 class ProspectoBecario extends Persona
 {
- //Data for follow up the desired applicant's university
- private $programmeName;
- private $programmeType; //Master, PhD
- private $programmeArea;
- private $targetUniversityName; 
- private $targetUniversityCountry;
- private $targetUniversityAddress;
- private $applicationYear;
+ private $ID;
+ private $beca;
  //Data for statistical purposes about the past education of the applicant
  private $procedenceProgrammeName;
  private $procedenceProgrammeType;//Bachelor, Master
@@ -20,57 +14,29 @@ class ProspectoBecario extends Persona
  private $reminder; //cast to bool
  const DAYS_FOR_REMINDER = 7; //NUMBER OF DAYS BETWEEN REMINDERS
  protected static $numberProspectsCreated; //Counter for total of applicants
- 
+  
  public function __construct(){
 	//Default values 
    parent::__construct();
+   $this->ID = uniqid();
    $this->applicationYear = 2000;
    $this->acceptanceLetter = FALSE;
    $this->reminder = TRUE;
    self::$numberProspectsCreated++;
-}
- public function setProgrammeName( $newProgrammeName ){   
-	$this->programmeName = $newProgrammeName;
- }
- public function getProgrammeName(){
-    return $this->programmeName;
  }
  
- public function setProgrammeType( $newProgrammeType ){   
-	$this->programmeType = $newProgrammeType;
- }
- public function getProgrammeType(){
-    return $this->programmeType;
- } 
-
- public function setProgrammeArea( $newProgrammeArea ){
- 	$this->programmeArea = $newProgrammeArea;
- }
- public function getProgrammeArea(){
- 	return $this->programmeArea;
+ public function __toString()
+ {
+ 	return 'ID: ' . $this->ID;
  }
  
- public function setTargetUniversityName( $newTargetUniversityName ){   
-	$this->targetUniversityName = $newTargetUniversityName;
+ public function setBecas(Becas $newBeca ){
+ 	$this->beca = $newBeca;
  }
- public function getTargetUniversityName(){
-    return $this->targetUniversityName;
- }
- 
- public function setTargetUniversityCountry( $newTargetUniversityCountry ){
- 	$this->targetUniversityCountry = $newTargetUniversityCountry;
- }
- public function getTargetUniversityCountry(){
- 	return $this->targetUniversityCountry;
+ public function getBecas(){
+ 	return $this->becas;
  }
  
- public function setTargetUniversityAddress( $newTargetUniversityAddress ){
- 	$this->targetUniversityAddress = $newTargetUniversityAddress;
- }
- public function getTargetUniversityAddress(){
- 	return $this->targetUniversityAddress;
- }
-
  public function setProcedenceProgrammeName( $newProcedenceProgrammeName ){
  	$this->procedenceProgrammeName = $newProcedenceProgrammeName;
  }

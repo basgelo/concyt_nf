@@ -9,13 +9,13 @@ class Persona
  private $telephone1;
  private $telephone2;
  private $email_address;
- private $ID;
+ private $user;
  
  public function __construct(){
 	//Default values 
    $this->name = "noname";
    $this->lastName1 = "nolastname";
-   $this->ID = uniqid();
+   
 }
  
  public function setName( $newName ){   
@@ -67,17 +67,19 @@ class Persona
     return $this->email_address;
  }
  
- public function __toString()
- {
-   return 'The ID of this object is ' . $this->ID . '<br>';
- }
- 
  private function checkEmail_Address($email_AddressToCheck){
  	if(filter_var($email_AddressToCheck, FILTER_VALIDATE_EMAIL)){
  		return TRUE;
  	}else{
  		return FALSE;
  	}
+ }
+ 
+ public function setUSer(SystemUser $newUser ){
+ 	$this->user = $newUser;
+ }
+ public function getUser(){
+ 	return $this->user;
  }
 
 }
